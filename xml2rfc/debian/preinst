@@ -1,0 +1,15 @@
+#! /bin/sh
+set -e
+case "$1" in
+    install|upgrade)
+	dpkg-divert --package python-xml2rfc --add --rename --divert /usr/bin/xml2rfc.tcl /usr/bin/xml2rfc
+    ;;
+
+    abort-upgrade)
+    ;;
+
+    *)
+        echo "preinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac

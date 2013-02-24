@@ -1,0 +1,16 @@
+Source: xml2rfc
+Maintainer: Miek Gieben <miek@miek.nl>
+Section: python
+Priority: optional
+Build-Depends: python-setuptools (>= 0.6b3), python-all (>= 2.6.6-3), debhelper (>= 7.4.3)
+Standards-Version: 3.9.1
+
+Package: python-xml2rfc
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}
+Description: Validate and convert XML RFC docs to various output formats
+ This package provides xml2rfc version 2, a tool which creates text, HTML and
+ nroff output in the format required for Internet-Drafts and RFCs.  The
+ text and nroff output is suitable for input to the RFC editor.
+ .
+ The DTD used by the XML documents is described in RFC 2629.

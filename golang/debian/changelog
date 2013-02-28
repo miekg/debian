@@ -2,7 +2,7 @@ golang (2:1.0.3-3ubuntu2-ppa1) quantal; urgency=low
 
   * Package creating/upload fixes
 
- -- Miek Gieben <miek@strange>  Thu, 28 Feb 2013 11:35:28 +0100
+ -- R. Gieben <miek@miek.nl>  Thu, 28 Feb 2013 11:35:28 +0100
 
 golang (2:1.0.3-3ubuntu1) quantal; urgency=low
 

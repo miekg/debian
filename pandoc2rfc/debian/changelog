@@ -1,3 +1,9 @@
+pandoc2rfc (2.1.10-1) testing; urgency=low
+
+  * New upstream release
+
+ -- Miek Gieben <miek@atoom.net>  Wed, 13 Mar 2013 16:13:47 +0100
+
 pandoc2rfc (2.1.9-1) testing; urgency=low
 
   * New upstream release. 

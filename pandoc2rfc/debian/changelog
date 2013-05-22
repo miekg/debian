@@ -1,3 +1,9 @@
+pandoc2rfc (2.1.13-1ubuntu1) raring; urgency=low
+
+  * New upstream release.
+
+ -- R. Gieben <miek@miek.nl>  Wed, 22 May 2013 13:27:42 +0200
+
 pandoc2rfc (2.1.12-1ubuntu2) raring; urgency=low
 
   * New upstream release.

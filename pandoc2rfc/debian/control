@@ -2,7 +2,7 @@ Source: pandoc2rfc
 Section: multiverse/text
 Priority: extra
 Maintainer: Miek Gieben <miek@miek.nl>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), pandoc, xsltproc
 Standards-Version: 3.9.3
 Homepage: https://github.com/miekg/pandoc2rfc
 #Vcs-Git: git://git.debian.org/collab-maint/pandoc2rfc.git

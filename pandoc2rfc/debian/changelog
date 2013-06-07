@@ -1,4 +1,4 @@
-pandoc2rfc (2.1.16-1ubuntu3) raring; urgency=low
+pandoc2rfc (2.1.17-1ubuntu1) raring; urgency=low
 
   * Fix build by adding dependency on pandoc
 

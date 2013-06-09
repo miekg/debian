@@ -1,3 +1,9 @@
+pandoc2rfc (2.1.18-1ubuntu3) raring; urgency=low
+
+  * New git snapshot
+
+ -- R. Gieben <miek@miek.nl>  Sun, 09 Jun 2013 18:32:26 +0100
+
 pandoc2rfc (2.1.18-1ubuntu2) raring; urgency=low
 
   *  New upstream release

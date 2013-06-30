@@ -1,3 +1,9 @@
+pandoc2rfc (2.1.19-1ubuntu3) rargin; urgency=low
+
+  * New git snapshot
+
+ -- R. Gieben <miek@miek.nl>  Sun, 30 Jun 2013 14:13:43 +0100
+
 pandoc2rfc (2.1.19-1ubuntu2) raring; urgency=low
 
   * New git snapshot

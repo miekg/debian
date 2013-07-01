@@ -1,3 +1,9 @@
+pandoc2rfc (2.2.0-1ubuntu2) raring; urgency=low
+
+  * New git snapshot: ca2759f462719ef7c9d2950cc11f71459b2ea18b
+
+ -- R. Gieben <miek@miek.nl>  Mon, 01 Jul 2013 19:09:28 +0100
+
 pandoc2rfc (2.2.0-1ubuntu1) raring; urgency=low
 
   * New git snapshot

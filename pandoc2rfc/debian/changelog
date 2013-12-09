@@ -1,3 +1,9 @@
+pandoc2rfc (2.2.1-1ubuntu3) raring; urgency=low
+
+  * New git snapshot: db15f56c473d5b76044e154e92fc3cd208ccaa63
+
+ -- Miek Gieben <miek@miek.nl>  Mon, 09 Dec 2013 20:10:45 +0000
+
 pandoc2rfc (2.2.1-1ubuntu2) raring; urgency=low
 
   * New git snapshot: db15f56c473d5b76044e154e92fc3cd208ccaa63

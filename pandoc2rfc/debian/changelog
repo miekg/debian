@@ -1,3 +1,9 @@
+pandoc2rfc (2.2.3-1ubuntu1) saucy; urgency=low
+
+  * Release for saucy 
+
+ -- Miek Gieben <miek@miek.nl>  Tue, 10 Dec 2013 20:46:28 +0000
+
 pandoc2rfc (2.2.2-1ubuntu1) raring; urgency=low
 
   * New git snapshot: db15f56c473d5b76044e154e92fc3cd208ccaa63

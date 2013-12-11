@@ -1,3 +1,9 @@
+xml2rfc (2.4.4) saucy; urgency=low
+
+  * New upstream release 
+
+ -- Miek Gieben <miek@miek.nl>  Wed, 11 Dec 2013 06:40:58 +0000
+
 xml2rfc (2.4.3ubuntu1) saucy; urgency=low
 
   * New upstream release. 

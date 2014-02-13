@@ -1,3 +1,9 @@
+pandoc2rfc (2.11.0-1ubuntu0) saucy; urgency=low
+
+  * New upstream release, tag 2.11
+
+ -- Miek Gieben <miek@miek.nl>  Thu, 13 Feb 2014 19:36:22 +0000
+
 pandoc2rfc (2.2.3-1ubuntu1) saucy; urgency=low
 
   * Release for saucy 

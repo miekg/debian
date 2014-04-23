@@ -1,3 +1,9 @@
+pandoc2rfc (2.13.0-1ubuntu0) trusty; urgency=medium
+
+  * Release for Ubuntu 14.04, tag 2.13
+
+ -- Miek Gieben <miek@miek.nl>  Wed, 23 Apr 2014 07:45:20 +0100
+
 pandoc2rfc (2.12.0-1ubuntu0) saucy; urgency=low
 
   * * New upstream release, tag 2.12

@@ -1,3 +1,9 @@
+xml2rfc (2.4.5ubuntu1) trusty; urgency=medium
+
+  * Build for Ubuntu 14.04
+
+ -- Miek Gieben <miek@miek.nl>  Wed, 23 Apr 2014 07:38:34 +0100
+
 xml2rfc (2.4.5) saucy; urgency=low
 
   * New upstream release 
@@ -18,7 +24,7 @@ xml2rfc (2.4.3ubuntu1) saucy; urgency=low
 
 xml2rfc (2.4.2ubuntu1) raring; urgency=low
 
-  * New upstream release.
+  * New upstream release
 
  -- R. Gieben <miek@miek.nl>  Mon, 03 Jun 2013 20:52:51 +0100
 

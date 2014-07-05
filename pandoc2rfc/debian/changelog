@@ -1,3 +1,9 @@
+pandoc2rfc (2.13.0-1ubuntu1) trusty; urgency=medium
+
+  * Depend on either xml2rfc or python-xml2rfc.
+
+ -- Miek Gieben <miek@miek.nl>  Sat, 05 Jul 2014 15:02:43 +0100
+
 pandoc2rfc (2.13.0-1ubuntu0) trusty; urgency=medium
 
   * Release for Ubuntu 14.04, tag 2.13

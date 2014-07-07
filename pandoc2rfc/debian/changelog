@@ -1,3 +1,10 @@
+pandoc2rfc (2.14.0-1ubuntu0) trusty; urgency=medium
+
+  * New upstream release, that supports iref and 
+    style="format ..."
+
+ -- Miek Gieben <miek@miek.nl>  Mon, 07 Jul 2014 22:27:12 +0100
+
 pandoc2rfc (2.13.0-1ubuntu1) trusty; urgency=medium
 
   * Depend on either xml2rfc or python-xml2rfc.

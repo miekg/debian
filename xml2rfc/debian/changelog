@@ -2,7 +2,7 @@ xml2rfc (2.4.10ubuntu1) trusty; urgency=medium
 
   * New upstream release
 
- -- Miek Gieben <miek@boss>  Mon, 09 Mar 2015 07:33:12 +0000
+ -- Miek Gieben <miek@miek.nl>  Mon, 09 Mar 2015 07:33:12 +0000
 
 xml2rfc (2.4.8ubuntu1) trusty; urgency=medium
 

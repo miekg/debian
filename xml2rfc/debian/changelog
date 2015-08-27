@@ -1,3 +1,9 @@
+xml2rfc (2.5.0ubuntu2) trusty; urgency=medium
+
+  * New build, to fix DistributionNotFound error
+
+ -- Miek Gieben <miek@miek.nl>  Thu, 27 Aug 2015 12:12:54 +0100
+
 xml2rfc (2.5.0ubuntu1) trusty; urgency=medium
 
   * New upstream release

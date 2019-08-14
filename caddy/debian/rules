@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+
+VERSION := 0.10.10
+
+DEB_HOST_ARCH   := $(DEB_TARGET_ARCH)
+DISTRIBUTION    := $(shell lsb_release -sr)
+PACKAGEVERSION  := $(VERSION)-0~$(DISTRIBUTION)0
+BINARY          := caddy # Expect compiled binary in our local directory.
+
+%:
+	dh_clean
+	dh $@ --with systemd
+
+override_dh_strip:
+	# don't perform dh_strip
+	echo dh_strip
+
+override_dh_auto_clean:
+override_dh_auto_test:
+override_dh_auto_build:
+override_dh_auto_install:
+	mkdir -p debian/caddy/usr/bin debian/caddy/etc/caddy
+	cp caddy debian/caddy/usr/bin
+	cp debian/Caddyfile debian/caddy/etc/caddy/Caddyfile
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION)

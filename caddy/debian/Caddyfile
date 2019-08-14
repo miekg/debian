@@ -1,0 +1,3 @@
+# Default Caddyfile, see https://caddyserver.com for more information.
+
+localhost:8080

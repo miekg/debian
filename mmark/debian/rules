@@ -1,0 +1,25 @@
+#!/usr/bin/make -f
+
+VERSION := 2.0.48
+
+DEB_HOST_ARCH   := $(DEB_TARGET_ARCH)
+DISTRIBUTION    := $(shell lsb_release -sr)
+PACKAGEVERSION  := $(VERSION)-0~$(DISTRIBUTION)0
+BINARY          := mmark # Expect compiled binary in our local directory.
+
+%:
+	dh_clean
+	dh $@
+
+override_dh_strip:
+	echo dh_strip
+
+override_dh_auto_clean:
+override_dh_auto_test:
+override_dh_auto_build:
+override_dh_auto_install:
+	mkdir -p debian/mmark/usr/bin
+	cp mmark debian/mmark/usr/bin
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION)

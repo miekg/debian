@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-VERSION := 2.0.48
+VERSION := 2.0.52
 
 DEB_HOST_ARCH   := $(DEB_TARGET_ARCH)
 DISTRIBUTION    := $(shell lsb_release -sr)

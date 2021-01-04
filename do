@@ -37,7 +37,7 @@ function downloadCompileGoAndCopy() {
     GIT=$(basename ${URL})
     DIR=$(mktemp -d)
     trap "rm -rf ${DIR}" RETURN
-    ( cd $DIR && git clone --depth 1 ${URL} && cd ${GIT} && git checkout ${VERSION} && go build;
+    ( cd $DIR && git clone --depth 10 ${URL} && cd ${GIT} && git checkout ${VERSION} && go build;
         for B in ${BIN}; do cp -r ${B} ${BASE}; done )
 }
 

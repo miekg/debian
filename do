@@ -30,14 +30,14 @@ function downloadAndCopy() {
 
 function downloadCompileGoAndCopy() {
     local BASE=${1}; shift
+    local VERSION=${1}; shift
     local URL=${1}; shift
     local BIN=${@}
 
     GIT=$(basename ${URL})
     DIR=$(mktemp -d)
-    echo $DIR
-#    trap "rm -rf ${DIR}" RETURN
-    ( cd $DIR && git clone ${URL} && cd ${GIT} && go build;
+    trap "rm -rf ${DIR}" RETURN
+    ( cd $DIR && git clone ${URL} && cd ${GIT} && git checkout ${VERSION} && go build;
         for B in ${BIN}; do cp -r ${B} ${BASE}; done )
 }
 
@@ -51,8 +51,8 @@ for d in $DIRS; do
         downloadAndCopy ${PWD}/${d} ${URL} "prometheus"
         ;;
     coredns)
-        echo downloadCompileGoAndCopy ${PWD}/${d} ${URL} "coredns"
-        downloadCompileGoAndCopy ${PWD}/${d} ${URL} "coredns" "man"
+        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"
+        VERSION="0.0+git${VERSION}" # Create new version for debian package.
         ;;
     esac
     ( cd ${d}; dch -v ${VERSION} "Release latest for debian/ubuntu" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )

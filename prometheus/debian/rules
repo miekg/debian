@@ -1,15 +1,8 @@
 #!/usr/bin/make -f
 
-VERSION 	:= "2.23.0"
-LINUX_ARCH	:= $(DEB_TARGET_ARCH)
 DEB_HOST_ARCH   := $(DEB_TARGET_ARCH)
 DISTRIBUTION    := $(shell lsb_release -sr)
 PACKAGEVERSION  := $(VERSION)-0~$(DISTRIBUTION)0
-
-# Debian calls it armhf, we call it arm.
-ifeq ($(DEB_TARGET_ARCH),armhf)
-    LINUX_ARCH=arm
-endif
 
 %:
 	dh_clean

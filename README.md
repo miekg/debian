@@ -1,14 +1,10 @@
-* prometheus - install from released tar.gz
-* coredns - install from master
-* k3s - install from released tar.gz
+Small Debian/Ubunti CI/CD
 
+Build debian packages for stuff that's
 
-github workflow that calls make, and then does a release? Via a tag?
+* not packages correctly in Debian (no k8s support in prometheus e.g.)
+* too old (coredns)
+* not packaged at all (k3s)
 
-
-Various debian/ package directories to help my packages that I locally use.
-
-* [mmark](github.com/mmarkdown/mmark) moved to nfpm to package a debian package. Just use 'make
-  debian'
-* [yamlfmt](github.com/miekg/yamlfmt) moved to nfpm to package a debian package. Just use 'make
-  debian'
+This repo automatically packages: prometheus, k3s and coredns, either from a master branch or a
+GitHUB release.

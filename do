@@ -19,15 +19,14 @@ function downloadAndCopy() {
     TAR=$(basename ${URL})
 
     DIR=$(mktemp -d)
-    echo ${DIR}
-#    trap "rm -rf ${DIR}" RETURN
-    ( cd $DIR; wget -q --show-progress ${URL} && tar xvf ${TAR}; TARDIR=$(tar tvf prometheus-2.23.0.linux-amd64.tar.gz|head -1 |rev | cut -f1 -d" " |rev); \
+    trap "rm -rf ${DIR}" RETURN
+    ( cd $DIR; wget -q --show-progress ${URL} && tar xvf ${TAR}; TARDIR=$(tar tvf prometheus-2.23.0.linux-amd64.tar.gz|head -1 |rev |cut -f1 -d" " |rev); \
      cp ${TARDIR}${BIN} ${BASE} )
 }
 
 for d in $DIRS; do
     export VERSION=$(eval echo '$VERSION_'$d)
-    URL=$(eval echo $'$DOWNLOAD_'$d | envsubst)
+    URL=$(eval echo $'$DOWNLOAD_'$d |envsubst)
     echo 2>&1 Downloading $URL
     case ${d} in
     prometheus)

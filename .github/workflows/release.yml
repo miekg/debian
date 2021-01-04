@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Environment
-        run: sudo apt-get install devscripts
+        run: sudo apt-get install devscripts debhelper dh-systemd
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build

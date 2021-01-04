@@ -35,4 +35,6 @@ for d in $DIRS; do
         ;;
     esac
     ( cd ${d}; dch -v ${VERSION} "Release latest for debian/ubuntu" && dpkg-buildpackage -us -uc -b --target-arch amd64 )
+    mkdir -p assets
+    mv *.deb assets
 done

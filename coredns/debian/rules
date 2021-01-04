@@ -12,15 +12,18 @@ override_dh_strip:
 	echo dh_strip
 
 override_dh_auto_clean:
-	rm -rf debian/prometheus/usr/bin
+	rm -rf debian/coredns/usr/bin debian/coredns/etc/coredns debian/man
 
 override_dh_auto_test:
 override_dh_auto_build:
 	@echo noop
 
 override_dh_auto_install:
-	mkdir -p debian/prometheus/usr/bin && \
-	cp prometheus debian/prometheus/usr/bin
+	mkdir -p debian/coredns/usr/bin debian/coredns/etc/coredns
+	mkdir -p debian/man
+	cp coredns debian/coredns/usr/bin
+	cp man/* debian/man/
+	cp debian/Corefile debian/coredns/etc/coredns/Corefile
 
 override_dh_gencontrol:
 	dh_gencontrol -- -v$(PACKAGEVERSION)

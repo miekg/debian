@@ -1,0 +1,7 @@
+coredns (0.0+git0cb5298bd39f895f1ef7ae5d70ebd3301d54af61) UNRELEASED; urgency=medium
+
+  * Package for Debian.
+  * Release latest for debian/ubuntu
+  * Release latest for debian/ubuntu
+
+ -- Miek Gieben <miek@miek.nl>  Mon, 04 Jan 2021 20:28:11 +0100

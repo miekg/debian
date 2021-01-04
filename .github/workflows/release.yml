@@ -16,14 +16,17 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         run: ./do
+      - name: Get Current Epoch
+        id: epoch
+        run: echo "name=$(date +'%s')" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          tag_name: tag-${{ steps.epoch.outputs.epoch }}
+          release_name: Release-${{ steps.epoch.outputs.epoch }}
           draft: false
           prerelease: false
       - name: Upload Release Assets

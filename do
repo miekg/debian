@@ -1,11 +1,11 @@
 #!/bin/bash
 
+# What to build
+DIRS=prometheus coredns
+
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
 VERSION_coredns=0cb5298bd39f895f1ef7ae5d70ebd3301d54af61
-
-#DIRS=prometheus
-DIRS=coredns
 
 export ARCH=amd64
 export GITHUB=https://github.com

@@ -1,4 +1,4 @@
-Small Debian/Ubunti CI/CD
+Small Debian/Ubuntu CI/CD
 
 Build debian packages for stuff that's
 
@@ -6,5 +6,5 @@ Build debian packages for stuff that's
 * too old (coredns)
 * not packaged at all (k3s)
 
-This repo automatically packages: prometheus, k3s and coredns, either from a master branch or a
-GitHUB release.
+This repo automatically packages: prometheus, k3s and coredns, either from a master branch/commit or a
+GitHub release.

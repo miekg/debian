@@ -37,7 +37,7 @@ function downloadCompileGoAndCopy() {
     GIT=$(basename ${URL})
     DIR=$(mktemp -d)
     trap "rm -rf ${DIR}" RETURN
-    ( cd $DIR && git clone ${URL} && cd ${GIT} && git checkout ${VERSION} && go build;
+    ( cd $DIR && git clone --depth 1 ${URL} && cd ${GIT} && git checkout ${VERSION} && go build;
         for B in ${BIN}; do cp -r ${B} ${BASE}; done )
 }
 
@@ -52,6 +52,7 @@ for d in $DIRS; do
         ;;
     coredns)
         downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"
+        VERSON=$(echo ${VERSION} | cut -c 1-8) # Short hash
         VERSION="0.0+git${VERSION}" # Create new version for debian package.
         ;;
     esac

@@ -1,0 +1,8 @@
+Source: prometheus
+Maintainer: Miek Gieben <miek@miek@miek.nl>
+Build-Depends: debhelper (>= 9), ca-certificates, curl, dh-systemd, lsb-release, jq
+
+Package: prometheus
+Architecture: any
+Description: Monitoring system and time series database
+Depends: adduser

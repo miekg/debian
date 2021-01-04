@@ -9,7 +9,7 @@ export ARCH=amd64
 export GITHUB=https://github.com
 export DOWNLOAD_prometheus='${GITHUB}/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-${ARCH}.tar.gz'
 
-export DEBFULLNAME=$(git log -1 --pretty=format:'%am')
+export DEBFULLNAME=$(git log -1 --pretty=format:'%an')
 export DEBEMAIL=$(git log -1 --pretty=format:'%ae')
 
 function downloadAndCopy() {
@@ -31,9 +31,8 @@ for d in $DIRS; do
     echo 2>&1 Downloading $URL
     case ${d} in
     prometheus)
-        downloadAndCopy ${PWD}/${d} ${URL} "prometheus" && \
-        dch -v ${VERSION} "Release latest for debian/ubuntu"
+        downloadAndCopy ${PWD}/${d} ${URL} "prometheus"
         ;;
-
     esac
+    ( cd ${d}; dch -v ${VERSION} "Release latest for debian/ubuntu" && dpkg-buildpackage -us -uc -b --target-arch amd64 )
 done

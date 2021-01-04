@@ -18,7 +18,7 @@ jobs:
         run: ./do
       - name: Get Current Epoch
         id: epoch
-        run: echo "name=$(date +'%s')" >> $GITHUB_ENV
+        run: echo "epoch=$(date +'%s')" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # What to build
-DIRS="prometheus coredns"
+#DIRS="prometheus coredns k3s"
+DIRS="k3s"
 
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
@@ -50,12 +51,15 @@ for d in $DIRS; do
     prometheus)
         downloadAndCopy ${PWD}/${d} ${URL} "prometheus"
         ;;
+    k3s)
+        downloadAndCopy ${PWD}/${d} ${URL} "k3s"
+        ;;
     coredns)
         downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"
         VERSON=$(echo ${VERSION} | cut -c 1-8) # Short hash
         VERSION="0.0+git${VERSION}" # Create new version for debian package.
         ;;
     esac
-    ( cd ${d}; dch -v ${VERSION} "Release latest for debian/ubuntu" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
+    ( cd ${d}; dch -v ${VERSION} "Latest release" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
     mv *.deb assets
 done

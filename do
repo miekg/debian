@@ -27,11 +27,11 @@ function downloadAndCopy() {
 
     case ${URL} in
     *.tar.gz)
-        ( cd $DIR; wget -q --show-progress ${URL} && tar xvf ${TAR}; TARDIR=$(tar tvf ${TAR} |head -1 |rev |cut -f1 -d" " |rev); \
+        ( cd $DIR; wget -q ${URL} && tar xvf ${TAR}; TARDIR=$(tar tvf ${TAR} |head -1 |rev |cut -f1 -d" " |rev); \
             for B in ${BIN}; do cp -r ${TARDIR}${B} ${BASE}; done )
         ;;
     *)
-        ( cd $DIR; wget -q --show-progress ${URL} && for B in ${BIN}; do cp -r ${B} ${BASE}; done )
+        ( cd $DIR; wget -q ${URL} && for B in ${BIN}; do cp -r ${B} ${BASE}; done )
         ;;
     esac
 }
@@ -45,7 +45,7 @@ function downloadCompileGoAndCopy() {
     GIT=$(basename ${URL})
     DIR=$(mktemp -d)
     trap "rm -rf ${DIR}" RETURN
-    ( cd $DIR && git clone --depth 1 ${URL} && cd ${GIT} && git checkout ${VERSION} && go build;
+    ( cd $DIR && git clone --depth 10 ${URL} && cd ${GIT} && git checkout ${VERSION} && go build;
         for B in ${BIN}; do cp -r ${B} ${BASE}; done )
 }
 

@@ -1,0 +1,28 @@
+#!/usr/bin/make -f
+
+DEB_HOST_ARCH   := $(DEB_TARGET_ARCH)
+DISTRIBUTION    := $(shell lsb_release -sr)
+PACKAGEVERSION  := $(VERSION)-0~$(DISTRIBUTION)0
+
+%:
+	dh_clean
+	dh $@ --with systemd
+
+override_dh_strip:
+	echo dh_strip
+
+override_dh_auto_clean:
+	rm -rf debian/k3s/usr/bin debian/k3s/var/lib/rancher
+
+override_dh_auto_test:
+override_dh_auto_build:
+	@echo noop
+
+override_dh_auto_install:
+	mkdir -p debian/k3s/usr/bin
+	mkdir -p debian/k3s/var/lib/rancher/k3s
+	mkdir -p debian/man
+	cp k3s debian/k3s/usr/bin
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION)

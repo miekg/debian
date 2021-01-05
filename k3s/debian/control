@@ -1,0 +1,8 @@
+Source: k3s
+Maintainer: Miek Gieben <miek@miek.nl>
+Build-Depends: debhelper (>= 9), ca-certificates, dh-systemd, lsb-release
+
+Package: k3s
+Architecture: any
+Description: Lightweight Kubernetes
+Depends:

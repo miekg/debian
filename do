@@ -66,7 +66,6 @@ for d in $DIRS; do
         downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"
         VERSION=$(echo ${VERSION} | cut -c 1-8) # Short hash
         VERSION="0.0+git${VERSION}" # Create new version for debian package.
-
         ;;
     esac
     ( cd ${d}; dch -b -v ${VERSION} "Latest release" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )

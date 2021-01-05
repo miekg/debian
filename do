@@ -1,8 +1,7 @@
 #!/bin/bash
 
-# What to build
-#DIRS="prometheus coredns k3s"
-DIRS="k3s"
+# What to build:
+DIRS="prometheus coredns k3s"
 
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
@@ -24,7 +23,7 @@ function downloadAndCopy() {
 
     TAR=$(basename ${URL})
     DIR=$(mktemp -d)
-#    trap "rm -rf ${DIR}" RETURN
+    trap "rm -rf ${DIR}" RETURN
 
     case ${URL} in
     *.tar.gz)

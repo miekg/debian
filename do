@@ -64,10 +64,11 @@ for d in $DIRS; do
         ;;
     coredns)
         downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"
-        VERSON=$(echo ${VERSION} | cut -c 1-8) # Short hash
+        VERSION=$(echo ${VERSION} | cut -c 1-8) # Short hash
         VERSION="0.0+git${VERSION}" # Create new version for debian package.
+
         ;;
     esac
-    ( cd ${d}; dch -v ${VERSION} "Latest release" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
+    ( cd ${d}; dch -b -v ${VERSION} "Latest release" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
     mv *.deb assets
 done

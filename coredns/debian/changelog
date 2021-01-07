@@ -1,5 +1,6 @@
-coredns (0.0+git0cb5298bd39f895f1ef7ae5d70ebd3301d54af61) UNRELEASED; urgency=medium
+coredns (0.0+git0cb5298b) UNRELEASED; urgency=medium
 
   * Release latest.
+  * Latest release
 
- -- Miek Gieben <miek@miek.nl>  Mon, 04 Jan 2021 20:28:11 +0100
+ -- Miek Gieben <miek@miek.nl>  Thu, 07 Jan 2021 10:43:02 +0100

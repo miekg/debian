@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# What to build:
-DIRS="prometheus coredns k3s"
+# What to build: (can be overruled on the command line)
+if [[ -z ${@} ]]; then
+    DIRS="prometheus coredns k3s"
+else
+    DIRS="${@}"
+fi
 
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2

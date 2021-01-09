@@ -1,7 +1,11 @@
 #!/bin/bash
 
-# What to build
-DIRS="prometheus coredns"
+# What to build: (can be overruled on the command line)
+if [[ -z ${@} ]]; then
+    DIRS="prometheus coredns k3s"
+else
+    DIRS="${@}"
+fi
 
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
@@ -24,8 +28,16 @@ function downloadAndCopy() {
     TAR=$(basename ${URL})
     DIR=$(mktemp -d)
     trap "rm -rf ${DIR}" RETURN
-    ( cd $DIR; wget -q --show-progress ${URL} && tar xvf ${TAR}; TARDIR=$(tar tvf ${TAR} |head -1 |rev |cut -f1 -d" " |rev); \
-        for B in ${BIN}; do cp -r ${TARDIR}${B} ${BASE}; done )
+
+    case ${URL} in
+    *.tar.gz)
+        ( cd $DIR; wget -q ${URL} && tar xvf ${TAR}; TARDIR=$(tar tvf ${TAR} |head -1 |rev |cut -f1 -d" " |rev); \
+            for B in ${BIN}; do cp -r ${TARDIR}${B} ${BASE}; done )
+        ;;
+    *)
+        ( cd $DIR; wget -q ${URL} && for B in ${BIN}; do cp -r ${B} ${BASE}; done )
+        ;;
+    esac
 }
 
 function downloadCompileGoAndCopy() {
@@ -50,12 +62,16 @@ for d in $DIRS; do
     prometheus)
         downloadAndCopy ${PWD}/${d} ${URL} "prometheus"
         ;;
+    k3s)
+        downloadAndCopy ${PWD}/${d} ${URL} "k3s"
+        VERSION=${VERSION:1} # Strip off 'v'.
+        ;;
     coredns)
         downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"
-        VERSON=$(echo ${VERSION} | cut -c 1-8) # Short hash
+        VERSION=$(echo ${VERSION} | cut -c 1-8) # Short hash
         VERSION="0.0+git${VERSION}" # Create new version for debian package.
         ;;
     esac
-    ( cd ${d}; dch -v ${VERSION} "Release latest for debian/ubuntu" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
+    ( cd ${d}; dch -b -v ${VERSION} "Latest release" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
     mv *.deb assets
 done

@@ -2,7 +2,7 @@
 
 # What to build: (can be overruled on the command line)
 if [[ -z ${@} ]]; then
-    DIRS="prometheus coredns k3s" # systemk"
+    DIRS="prometheus coredns k3s systemk"
 else
     DIRS="${@}"
 fi

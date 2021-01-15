@@ -4,6 +4,7 @@ Documentation=https://k3s.io
 After=network.target
 
 [Service]
+EnvironmentFile=/etc/default/k3s
 PermissionsStartOnly=true
 LimitNOFILE=1048576
 LimitNPROC=512
@@ -13,7 +14,9 @@ NoNewPrivileges=true
 User=root
 WorkingDirectory=~
 ExecStart=/usr/bin/k3s -d /var/lib/rancher/k3s --disable-agent --disable-kube-proxy --disable-network-policy --disable coredns \
---disable servicelb --disable traefik --disable-cloud-controller --disable local-storage --disable metrics-server
+--disable servicelb --disable traefik --disable-cloud-controller --disable local-storage --disable metrics-server \
+--write-kubeconfig /etc/k3s/admin.kubeconfig --write-kubeconfig-mode 0600 \
+--bind-address $BIND_ADDRESS --cluster-domain $CLUSTER_DOMAIN
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
 

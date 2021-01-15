@@ -2,7 +2,7 @@
 
 # What to build: (can be overruled on the command line)
 if [[ -z ${@} ]]; then
-    DIRS="prometheus coredns k3s"
+    DIRS="prometheus coredns k3s systemk"
 else
     DIRS="${@}"
 fi
@@ -16,6 +16,7 @@ export GITHUB=https://github.com
 export DOWNLOAD_prometheus='${GITHUB}/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-${ARCH}.tar.gz'
 export DOWNLOAD_k3s='${GITHUB}/k3s-io/k3s/releases/download/${VERSION}/k3s'
 export DOWNLOAD_coredns='${GITHUB}/coredns/coredns'
+export DOWNLOAD_systemk='${GITHUB}/virtual-kubelet/systemk'
 
 export DEBFULLNAME=$(git log -1 --pretty=format:'%an')
 export DEBEMAIL=$(git log -1 --pretty=format:'%ae')

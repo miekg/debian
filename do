@@ -9,7 +9,7 @@ fi
 
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
-VERSION_coredns=0cb5298bd39f895f1ef7ae5d70ebd3301d54af61
+VERSION_coredns=b2a22eff04fbfd9801d865f8a7702d6f62dfac14
 VERSION_systemk=239dad4977356e85e2425a473dfc539589a6ca0f
 
 export ARCH=amd64

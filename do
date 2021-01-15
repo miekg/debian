@@ -2,7 +2,7 @@
 
 # What to build: (can be overruled on the command line)
 if [[ -z ${@} ]]; then
-    DIRS="prometheus coredns k3s" # systemk"
+    DIRS="prometheus coredns k3s systemk"
 else
     DIRS="${@}"
 fi
@@ -10,7 +10,7 @@ fi
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
 VERSION_coredns=0cb5298bd39f895f1ef7ae5d70ebd3301d54af61
-VERSION_systemk=84fe89c58cb7386df601dde5a5020f8340694719
+VERSION_systemk=239dad4977356e85e2425a473dfc539589a6ca0f
 
 export ARCH=amd64
 export GITHUB=https://github.com

@@ -74,7 +74,7 @@ for d in $DIRS; do
         VERSION="0.0+git${VERSION}" # Create new version for debian package.
         ;;
     systemk)
-        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "systemk""
+        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "systemk"
         VERSION=$(echo ${VERSION} | cut -c 1-8)
         VERSION="0.0+git${VERSION}"
         ;;

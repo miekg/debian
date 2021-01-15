@@ -12,7 +12,7 @@ override_dh_strip:
 	echo dh_strip
 
 override_dh_auto_clean:
-	rm -rf debian/k3s/usr/bin debian/k3s/var/lib/rancher debian/k3s/etc/k3s
+	rm -rf debian/k3s/usr/bin
 
 override_dh_auto_test:
 override_dh_auto_build:
@@ -20,8 +20,6 @@ override_dh_auto_build:
 
 override_dh_auto_install:
 	mkdir -p debian/k3s/usr/bin
-	mkdir -p debian/k3s/var/lib/rancher/k3s
-	mkdir -p debian/k3s/etc/k3s
 	cp k3s debian/k3s/usr/bin
 
 override_dh_gencontrol:

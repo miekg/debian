@@ -57,22 +57,24 @@ function downloadCompileGoAndCopy() {
         for B in ${BIN}; do cp -r ${B} ${BASE}; done )
 }
 
+function stripV() {
+    local V=${1}
+    if [[ ${V} == v* ]]; then
+        echo ${V}
+        return
+    fi
+    echo ${V:1} # Strip off 'v'.
+}
+
 mkdir -p assets
 for d in $DIRS; do
     export VERSION=$(eval echo '$VERSION_'$d)
     URL=$(eval echo $'$DOWNLOAD_'$d |envsubst)
     echo 2>&1 Downloading $URL
     case ${d} in
-    prometheus)
-        downloadAndCopy ${PWD}/${d} ${URL} "prometheus"
-        ;;
-    k3s)
-        downloadAndCopy ${PWD}/${d} ${URL} "k3s"
-        VERSION=${VERSION:1} # Strip off 'v'.
-        ;;
-    kubectl)
-        downloadAndCopy ${PWD}/${d} ${URL} "kubectl"
-        VERSION=${VERSION:1} # Strip off 'v'.
+    prometheus|k3s|kubectl)
+        downloadAndCopy ${PWD}/${d} ${URL} ${d}
+        VERSION=$(stripV ${VERSION})
         ;;
     coredns)
         downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"

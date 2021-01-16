@@ -1,0 +1,8 @@
+Source: kubectl
+Maintainer: Miek Gieben <miek@miek.nl>
+Build-Depends: debhelper (>= 9), ca-certificates, lsb-release
+
+Package: kubectl
+Architecture: any
+Description: Command line tool to control Kubernetes clusters
+Depends:

@@ -9,6 +9,7 @@ fi
 
 VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
+VERSION_kubectl=v1.20.0
 VERSION_coredns=b2a22eff04fbfd9801d865f8a7702d6f62dfac14
 VERSION_systemk=239dad4977356e85e2425a473dfc539589a6ca0f
 
@@ -18,6 +19,7 @@ export DOWNLOAD_prometheus='${GITHUB}/prometheus/prometheus/releases/download/v$
 export DOWNLOAD_k3s='${GITHUB}/k3s-io/k3s/releases/download/${VERSION}/k3s'
 export DOWNLOAD_coredns='${GITHUB}/coredns/coredns'
 export DOWNLOAD_systemk='${GITHUB}/virtual-kubelet/systemk'
+export DOWNLOAD_kubectl='https://storage.googleapis.com/kubernetes-release/release/${VERSION}/bin/linux/${ARCH}/kubectl'
 
 export DEBFULLNAME=$(git log -1 --pretty=format:'%an')
 export DEBEMAIL=$(git log -1 --pretty=format:'%ae')
@@ -66,6 +68,10 @@ for d in $DIRS; do
         ;;
     k3s)
         downloadAndCopy ${PWD}/${d} ${URL} "k3s"
+        VERSION=${VERSION:1} # Strip off 'v'.
+        ;;
+    kubectl)
+        downloadAndCopy ${PWD}/${d} ${URL} "kubectl"
         VERSION=${VERSION:1} # Strip off 'v'.
         ;;
     coredns)

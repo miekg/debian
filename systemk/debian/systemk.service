@@ -7,13 +7,13 @@ After=network.target
 PermissionsStartOnly=true
 LimitNOFILE=1048576
 LimitNPROC=512
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
+Environment="NODE_IP=0.0.0.0"
+Environment="NODE_EXTERNAL_IP=0.0.0.0"
 EnvironmentFile=/etc/default/systemk
 User=root
 WorkingDirectory=~
-ExecStart=/usr/bin/systemk --kubeconfig /etc/systemk/kube.config
+ExecStart=/usr/bin/systemk --kubeconfig /etc/systemk/kube.config --node-ip $NODE_IP --node-external-ip $NODE_EXTERNAL_IP
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
 

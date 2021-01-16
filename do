@@ -60,10 +60,17 @@ function downloadCompileGoAndCopy() {
 function stripV() {
     local V=${1}
     if [[ ${V} == v* ]]; then
-        echo ${V}
+        echo ${V:1} # Strip off 'v'.
         return
     fi
-    echo ${V:1} # Strip off 'v'.
+    echo ${V}
+}
+
+function gitV() {
+    local V=${1}
+    V=$(echo ${V} | cut -c 1-8) # Short hash
+    V="0.0+git${V}" # Create new version for debian package.
+    echo ${V}
 }
 
 mkdir -p assets
@@ -77,14 +84,12 @@ for d in $DIRS; do
         VERSION=$(stripV ${VERSION})
         ;;
     coredns)
-        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "coredns" "man"
-        VERSION=$(echo ${VERSION} | cut -c 1-8) # Short hash
-        VERSION="0.0+git${VERSION}" # Create new version for debian package.
+        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} ${d} "man"
+        VERSION=$(gitV ${VERSION})
         ;;
     systemk)
-        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} "systemk"
-        VERSION=$(echo ${VERSION} | cut -c 1-8)
-        VERSION="0.0+git${VERSION}"
+        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} ${d}
+        VERSION=$(gitV ${VERSION})
         ;;
     esac
     ( cd ${d}; dch -b -v ${VERSION} "Releasing ${VERSION} for Debian" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )

@@ -85,6 +85,6 @@ for d in $DIRS; do
         VERSION="0.0+git${VERSION}"
         ;;
     esac
-    ( cd ${d}; dch -b -v ${VERSION} "Latest release" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
+    ( cd ${d}; dch -b -v ${VERSION} "Releasing ${VERSION} for Debian" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )
     mv *.deb assets
 done

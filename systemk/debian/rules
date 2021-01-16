@@ -12,15 +12,15 @@ override_dh_strip:
 	echo dh_strip
 
 override_dh_auto_clean:
-	rm -rf debian/k3s/usr/bin
+	rm -rf debian/systemk/usr/bin debian/systemk/etc/systemk
 
 override_dh_auto_test:
 override_dh_auto_build:
 	@echo noop
 
 override_dh_auto_install:
-	mkdir -p debian/k3s/usr/bin
-	cp k3s debian/k3s/usr/bin
+	mkdir -p debian/systemk/usr/bin
+	cp systemk debian/systemk/usr/bin
 
 override_dh_gencontrol:
 	dh_gencontrol -- -v$(PACKAGEVERSION)

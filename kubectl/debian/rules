@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+DEB_HOST_ARCH   := $(DEB_TARGET_ARCH)
+DISTRIBUTION    := $(shell lsb_release -sr)
+PACKAGEVERSION  := $(VERSION)-0~$(DISTRIBUTION)0
+
+%:
+	dh_clean
+	dh $@
+
+override_dh_strip:
+	echo dh_strip
+
+override_dh_auto_clean:
+	rm -rf debian/kubectl/usr/bin
+
+override_dh_auto_test:
+override_dh_auto_build:
+	@echo noop
+
+override_dh_auto_install:
+	mkdir -p debian/kubectl/usr/bin
+	cp kubectl debian/kubectl/usr/bin
+
+override_dh_gencontrol:
+	dh_gencontrol -- -v$(PACKAGEVERSION)

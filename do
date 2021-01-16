@@ -13,6 +13,12 @@ VERSION_kubectl=v1.20.0
 VERSION_coredns=b2a22eff04fbfd9801d865f8a7702d6f62dfac14
 VERSION_systemk=239dad4977356e85e2425a473dfc539589a6ca0f
 
+COPY_prometheus=prometheus
+COPY_k3s=k3s
+COPY_kubectl=kubectl
+COPY_coredns="coredns man"
+COPY_systemk=systemk
+
 export ARCH=amd64
 export GITHUB=https://github.com
 export DOWNLOAD_prometheus='${GITHUB}/prometheus/prometheus/releases/download/v${VERSION}/prometheus-${VERSION}.linux-${ARCH}.tar.gz'
@@ -76,20 +82,21 @@ function gitV() {
 mkdir -p assets
 for d in $DIRS; do
     export VERSION=$(eval echo '$VERSION_'$d)
+    COPY=$(eval echo '$COPY_'$d)
     URL=$(eval echo $'$DOWNLOAD_'$d |envsubst)
     echo 2>&1 Downloading $URL
     case ${d} in
     prometheus|k3s|kubectl)
-        downloadAndCopy ${PWD}/${d} ${URL} ${d}
+        downloadAndCopy ${PWD}/${d} ${URL} ${COPY}
         VERSION=$(stripV ${VERSION})
         ;;
-    coredns)
-        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} ${d} "man"
+    systemk|coredns)
+        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} ${COPY}
         VERSION=$(gitV ${VERSION})
         ;;
-    systemk)
-        downloadCompileGoAndCopy ${PWD}/${d} ${VERSION} ${URL} ${d}
-        VERSION=$(gitV ${VERSION})
+    *)
+        echo 2>&1 Unsupported program ${d}
+        exit 1
         ;;
     esac
     ( cd ${d}; dch -b -v ${VERSION} "Releasing ${VERSION} for Debian" && dpkg-buildpackage -us -uc -b --target-arch ${ARCH} )

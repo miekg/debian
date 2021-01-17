@@ -11,9 +11,9 @@ LimitNPROC=512
 NoNewPrivileges=true
 User=k3s
 WorkingDirectory=~
-ExecStart=/usr/bin/k3s server --disable-agent --disable-kube-proxy --disable-network-policy --disable coredns \
+ExecStart=/usr/bin/k3s server -d /var/lib/k3s --disable-agent --disable-kube-proxy --disable-network-policy --disable coredns \
 --disable servicelb --disable traefik --disable-cloud-controller --disable local-storage --disable metrics-server \
---write-kubeconfig ~k3s/admin.kubeconfig --write-kubeconfig-mode 0600 \
+--write-kubeconfig /var/lib/k3s/admin.kubeconfig --write-kubeconfig-mode 0600 \
 --bind-address $BIND_ADDRESS --cluster-domain $CLUSTER_DOMAIN
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure

@@ -8,12 +8,10 @@ EnvironmentFile=/etc/default/k3s
 PermissionsStartOnly=true
 LimitNOFILE=1048576
 LimitNPROC=512
-CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-AmbientCapabilities=CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
 User=k3s
 WorkingDirectory=~
-ExecStart=/usr/bin/k3s --disable-agent --disable-kube-proxy --disable-network-policy --disable coredns \
+ExecStart=/usr/bin/k3s server --disable-agent --disable-kube-proxy --disable-network-policy --disable coredns \
 --disable servicelb --disable traefik --disable-cloud-controller --disable local-storage --disable metrics-server \
 --write-kubeconfig ~k3s/admin.kubeconfig --write-kubeconfig-mode 0600 \
 --bind-address $BIND_ADDRESS --cluster-domain $CLUSTER_DOMAIN

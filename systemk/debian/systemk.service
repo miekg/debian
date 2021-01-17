@@ -1,5 +1,5 @@
 [Unit]
-Description=CoreDNS DNS server
+Description=Systemk a virtual kubelet backed by systemd
 Documentation=https://github.com/virtual-kubelet/systemk
 After=network.target
 

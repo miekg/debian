@@ -1,5 +1,5 @@
 [Unit]
-Description=CoreDNS DNS server
+Description=Systemk a virtual kubelet backed by systemd
 Documentation=https://github.com/virtual-kubelet/systemk
 After=network.target
 
@@ -13,7 +13,7 @@ Environment="NODE_EXTERNAL_IP=0.0.0.0"
 EnvironmentFile=/etc/default/systemk
 User=root
 WorkingDirectory=~
-ExecStart=/usr/bin/systemk --kubeconfig /etc/systemk/kube.config --node-ip $NODE_IP --node-external-ip $NODE_EXTERNAL_IP
+ExecStart=/usr/bin/systemk --kubeconfig /etc/systemk/admin.kubeconfig --node-ip $NODE_IP --node-external-ip $NODE_EXTERNAL_IP
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
 

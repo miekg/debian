@@ -11,7 +11,7 @@ VERSION_prometheus=2.23.0
 VERSION_k3s=v1.20.0+k3s2
 VERSION_kubectl=v1.20.0
 VERSION_coredns=b2a22eff04fbfd9801d865f8a7702d6f62dfac14
-VERSION_systemk=239dad4977356e85e2425a473dfc539589a6ca0f
+VERSION_systemk=4716657141a30e88ce4933c341777ed40f6b37d9
 
 COPY_prometheus=prometheus
 COPY_k3s=k3s

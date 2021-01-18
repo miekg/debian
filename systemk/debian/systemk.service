@@ -13,7 +13,8 @@ Environment="NODE_EXTERNAL_IP=0.0.0.0"
 EnvironmentFile=/etc/default/systemk
 User=root
 WorkingDirectory=~
-ExecStart=/usr/bin/systemk --kubeconfig /etc/systemk/admin.kubeconfig --node-ip $NODE_IP --node-external-ip $NODE_EXTERNAL_IP
+ExecStart=/usr/bin/systemk --kubeconfig /etc/systemk/admin.kubeconfig --node-ip $NODE_IP --node-external-ip $NODE_EXTERNAL_IP \
+--cluster-domain $CLUSTER_DOMAIN
 ExecReload=/bin/kill -SIGUSR1 $MAINPID
 Restart=on-failure
 

@@ -6,7 +6,7 @@ PACKAGEVERSION  := $(VERSION)-0~$(DISTRIBUTION)0
 
 %:
 	dh_clean
-	dh $@ --with systemd
+	dh $@ --with systemd,sysuser
 
 override_dh_strip:
 	echo dh_strip

@@ -3,5 +3,7 @@ coredns (0.0+gitb2a22eff) UNRELEASED; urgency=medium
   * Release latest.
   * Latest release
   * Releasing 0.0+gitb2a22eff for Debian
+  * Releasing 0.0+gitb2a22eff for Debian
+  * Releasing 0.0+gitb2a22eff for Debian
 
- -- Miek Gieben <miek@miek.nl>  Sat, 16 Jan 2021 18:15:19 +0100
+ -- Miek Gieben <miek@miek.nl>  Mon, 18 Jan 2021 13:46:06 +0100

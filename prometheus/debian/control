@@ -1,6 +1,6 @@
 Source: prometheus
 Maintainer: Miek Gieben <miek@miek@miek.nl>
-Build-Depends: debhelper (>= 9), ca-certificates, curl, dh-systemd, lsb-release, jq
+Build-Depends: debhelper (>= 9), ca-certificates, curl, dh-systemd, dh-sysuser, lsb-release, jq
 
 Package: prometheus
 Architecture: any

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    install|upgrade)
+        if ! getent group kubernetes > /dev/null; then
+            addgroup --system kubernetes
+        fi
+        ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -6,20 +6,20 @@ PACKAGEVERSION  := $(VERSION)-0~$(DISTRIBUTION)0
 
 %:
 	dh_clean
-	dh $@
+	dh $@ --with sysuser
 
 override_dh_strip:
 	echo dh_strip
 
 override_dh_auto_clean:
-	rm -rf debian/kubectl/usr/bin
+	rm -rf debian/kubectl/usr/bin debian/kubectl/etc/systemk
 
 override_dh_auto_test:
 override_dh_auto_build:
 	@echo noop
 
 override_dh_auto_install:
-	mkdir -p debian/kubectl/usr/bin
+	mkdir -p debian/kubectl/usr/bin debian/kubectl/etc/systemk
 	cp kubectl debian/kubectl/usr/bin
 
 override_dh_gencontrol:

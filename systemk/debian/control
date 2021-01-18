@@ -1,6 +1,6 @@
 Source: systemk
 Maintainer: Miek Gieben <miek@miek.nl>
-Build-Depends: debhelper (>= 9), ca-certificates, dh-systemd, lsb-release
+Build-Depends: debhelper (>= 9), ca-certificates, dh-systemd, dh-sysuser, lsb-release
 
 Package: systemk
 Architecture: any
